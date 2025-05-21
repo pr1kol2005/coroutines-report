@@ -6,3 +6,6 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(01_example 01_example.cpp)
 add_executable(02_goal 02_goal.cpp)
+
+# target_compile_options(01_example PRIVATE -Wall -Wextra)
+# target_compile_options(02_goal PRIVATE -Wall -Wextra)

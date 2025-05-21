@@ -1,8 +1,8 @@
 #include <cassert>
 #include <coroutine>
+#include <generator>
 #include <iostream>
 
-// TODO : чередование по двум векторам
-
 int main() {
+  return 0;
 }

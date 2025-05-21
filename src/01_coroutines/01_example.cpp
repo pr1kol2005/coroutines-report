@@ -1,5 +1,5 @@
-#include <iostream>
 #include <coroutine>
+#include <iostream>
 
 void foo() {
   std::cout << 'a' << std::endl;
@@ -8,5 +8,5 @@ void foo() {
 }
 
 int main() {
-  foo();
+  foo(); 
 }
