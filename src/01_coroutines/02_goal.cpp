@@ -17,6 +17,7 @@ struct Resumable {
 
   struct promise_type {
     Resumable get_return_object() { return Resumable(handle_type::from_promise(*this)); }
+    // TODO : show suspend_always / suspend_never difference
     std::suspend_always initial_suspend() { return {}; }
     std::suspend_always final_suspend() noexcept { return {}; }
     void unhandled_exception() {}
