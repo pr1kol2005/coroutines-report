@@ -10,7 +10,7 @@ class Generator {
   // using value_type = std::conditional_t<std::is_void_v<V>, std::remove_cvref_t<Ref>, V>;
   using value_type = std::remove_cvref_t<Ref>;
   // using reference = std::conditional_t<std::is_void_v<V>, Ref&&, Ref>;
-  using reference = Ref&&;
+  using reference = Ref;
 
  public:
   struct promise_type;
@@ -42,6 +42,16 @@ class Generator {
       handle_.destroy();
     }
   }
+
+  void resume() {
+    if (handle_) {
+      handle_.resume();
+    }
+  }
+
+  bool finished() const noexcept { return !handle_ || handle_.done(); }
+
+  value_type value() const { return handle_.promise().current_value; }
 
   class iterator;
 

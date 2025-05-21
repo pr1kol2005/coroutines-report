@@ -9,9 +9,9 @@ struct Tree {
   Tree* left{};
   Tree* right{};
 
-  Generator<const T&> traverse_inorder() const {
+  Generator<const T&> InorderTraverse() const {
     if (left) {
-      for (const auto& val : left->traverse_inorder()) {
+      for (const auto& val : left->InorderTraverse()) {
         co_yield val;
       }
     }
@@ -19,7 +19,7 @@ struct Tree {
     co_yield value;
 
     if (right) {
-      for (const auto& val : right->traverse_inorder()) {
+      for (const auto& val : right->InorderTraverse()) {
         co_yield val;
       }
     }
@@ -40,7 +40,7 @@ int main() {
         {'A'},                  {'C'}, {'E'},                    {'G'}
   };
  
-  for (char x : tree->traverse_inorder()) {
+  for (char x : tree->InorderTraverse()) {
     std::cout << x << ' ';
   }
   std::cout << '\n';
