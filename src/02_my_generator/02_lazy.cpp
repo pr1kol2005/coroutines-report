@@ -1,5 +1,3 @@
-#include <cassert>
-#include <coroutine>
 #include <iostream>
 
 #include "generator.hpp"
@@ -15,7 +13,7 @@ Generator<int> FibonacciLazy() {
   }
 }
 
-void UseFibonacciLazy(int limit) {
+void PrintFibonacci(int limit) {
   for (int x : FibonacciLazy()) {
     if (x > limit) {
       break;
@@ -27,5 +25,5 @@ void UseFibonacciLazy(int limit) {
 
 
 int main() {
-  UseFibonacciLazy(10);
+  PrintFibonacci(10);
 }

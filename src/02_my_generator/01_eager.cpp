@@ -16,9 +16,10 @@ std::vector<int> FibonacciEager(size_t count) {
   return result;
 }
 
-void UseFibonacciEager(size_t count, int limit) {
-  auto fibs = FibonacciEager(count);
-  for (int x : fibs) {
+void PrintFibonacci(size_t count, int limit) {
+  auto sequence = FibonacciEager(count);
+
+  for (int x : sequence) {
     if (x > limit) {
       break;
     }
@@ -27,6 +28,4 @@ void UseFibonacciEager(size_t count, int limit) {
   std::cout << '\n';
 }
 
-int main() {
-  UseFibonacciEager(10, 5);
-}
+int main() { PrintFibonacci(20, 10); }

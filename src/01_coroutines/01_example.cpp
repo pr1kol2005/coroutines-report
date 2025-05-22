@@ -1,4 +1,3 @@
-#include <coroutine>
 #include <iostream>
 
 void foo() {
@@ -7,6 +6,4 @@ void foo() {
   std::cout << 'c' << std::endl;
 }
 
-int main() {
-  foo(); 
-}
+int main() { foo(); }

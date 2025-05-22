@@ -1,12 +1,11 @@
-#include <cassert>
-#include <coroutine>  
 #include <iostream>
 #include <vector>
 
 #include "generator.hpp"
 
 template <typename T>
-Generator<const T&> MergeVectors(const std::vector<T>& lhs, const std::vector<T>& rhs) {
+Generator<const T&> MergeVectors(const std::vector<T>& lhs,
+                                 const std::vector<T>& rhs) {
   for (const auto& elem : lhs) {
     co_yield elem;
   }
@@ -16,7 +15,8 @@ Generator<const T&> MergeVectors(const std::vector<T>& lhs, const std::vector<T>
 }
 
 template <typename T>
-Generator<const T&> InterleaveVectors(const std::vector<T>& lhs, const std::vector<T>& rhs) {
+Generator<const T&> InterleaveVectors(const std::vector<T>& lhs,
+                                      const std::vector<T>& rhs) {
   size_t n = std::max(lhs.size(), rhs.size());
   for (size_t i = 0; i < n; ++i) {
     if (i < lhs.size()) {
@@ -32,13 +32,13 @@ int main() {
   std::vector<int> first{0, 0, 0};
   std::vector<int> second{1, 1, 1};
 
-  for (const auto& val : MergeVectors(first, second)) {
-    std::cout << val << ' ';
+  for (const auto& elem : MergeVectors(first, second)) {
+    std::cout << elem << ' ';
   }
   std::cout << '\n';
 
-  for (const auto& val : InterleaveVectors(first, second)) {
-    std::cout << val << ' ';
+  for (const auto& elem : InterleaveVectors(first, second)) {
+    std::cout << elem << ' ';
   }
   std::cout << '\n';
 }

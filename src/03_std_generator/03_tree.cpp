@@ -1,26 +1,26 @@
 #include <coroutine>
 #include <generator>
 #include <iostream>
- 
-template<typename T>
+
+template <typename T>
 struct Tree {
   T value;
   Tree* left{};
   Tree* right{};
 
-  std::generator<const T&> traverse_inorder() const {
+  std::generator<const T&> InorderTraverse() const {
     if (left) {
-      co_yield std::ranges::elements_of(left->traverse_inorder());
+      co_yield std::ranges::elements_of(left->InorderTraverse());
     }
 
     co_yield value;
 
     if (right) {
-      co_yield std::ranges::elements_of(right->traverse_inorder());
+      co_yield std::ranges::elements_of(right->InorderTraverse());
     }
   }
 };
- 
+
 int main() {
   Tree<char> tree[]
   {
@@ -34,8 +34,8 @@ int main() {
       //  │                       │      │                         │
         {'A'},                  {'C'}, {'E'},                    {'G'}
   };
- 
-  for (char x : tree->traverse_inorder()) {
+
+  for (char x : tree->InorderTraverse()) {
     std::cout << x << ' ';
   }
   std::cout << '\n';

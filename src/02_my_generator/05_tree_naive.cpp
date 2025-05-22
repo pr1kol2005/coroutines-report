@@ -1,9 +1,8 @@
-#include <coroutine>
 #include <iostream>
 
 #include "generator.hpp"
- 
-template<typename T>
+
+template <typename T>
 struct Tree {
   T value;
   Tree* left{};
@@ -20,9 +19,7 @@ struct Tree<T>::InorderIterator {
   Tree* current;
   std::stack<Tree*> path;
 
-  explicit InorderIterator(Tree* root) : current(root) {
-    PushLeft(current);
-  }
+  explicit InorderIterator(Tree* root) : current(root) { PushLeft(current); }
 
   void PushLeft(Tree* node) {
     while (node) {
@@ -36,9 +33,7 @@ struct Tree<T>::InorderIterator {
     }
   }
 
-  const T& operator*() const {
-    return current->value;
-  }
+  const T& operator*() const { return current->value; }
 
   InorderIterator& operator++() {
     if (path.empty()) {
@@ -65,8 +60,6 @@ struct Tree<T>::InorderIterator {
   }
 };
 
-
- 
 int main() {
   Tree<char> tree[]
   {
@@ -80,7 +73,7 @@ int main() {
       //  │                       │      │                         │
         {'A'},                  {'C'}, {'E'},                    {'G'}
   };
- 
+
   for (auto it = tree->begin(); it != tree->end(); ++it) {
     std::cout << *it << ' ';
   }

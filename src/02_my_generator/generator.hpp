@@ -7,7 +7,8 @@
 
 template <typename Ref>
 class Generator {
-  // using value_type = std::conditional_t<std::is_void_v<V>, std::remove_cvref_t<Ref>, V>;
+  // using value_type = std::conditional_t<std::is_void_v<V>,
+  // std::remove_cvref_t<Ref>, V>;
   using value_type = std::remove_cvref_t<Ref>;
   // using reference = std::conditional_t<std::is_void_v<V>, Ref&&, Ref>;
   using reference = Ref;

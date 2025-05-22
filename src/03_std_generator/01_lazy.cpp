@@ -1,4 +1,3 @@
-#include <cassert>
 #include <coroutine>
 #include <generator>
 #include <iostream>
@@ -14,7 +13,7 @@ std::generator<int> FibonacciLazy() {
   }
 }
 
-void UseFibonacciLazy(int limit) {
+void PrintFibonacci(int limit) {
   for (int x : FibonacciLazy()) {
     if (x > limit) {
       break;
@@ -24,7 +23,4 @@ void UseFibonacciLazy(int limit) {
   std::cout << '\n';
 }
 
-
-int main() {
-  UseFibonacciLazy(10);
-}
+int main() { PrintFibonacci(10); }

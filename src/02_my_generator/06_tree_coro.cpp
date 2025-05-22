@@ -1,9 +1,8 @@
-#include <coroutine>
 #include <iostream>
 
 #include "generator.hpp"
- 
-template<typename T>
+
+template <typename T>
 struct Tree {
   T value;
   Tree* left{};
@@ -25,7 +24,7 @@ struct Tree {
     }
   }
 };
- 
+
 int main() {
   Tree<char> tree[]
   {
@@ -39,7 +38,7 @@ int main() {
       //  │                       │      │                         │
         {'A'},                  {'C'}, {'E'},                    {'G'}
   };
- 
+
   for (char x : tree->InorderTraverse()) {
     std::cout << x << ' ';
   }

@@ -1,9 +1,9 @@
-#include <cassert>
 #include <iostream>
+#include <vector>
 
 template <typename T>
 std::vector<T> MergeVectors(const std::vector<T>& lhs,
-                                               const std::vector<T>& rhs) {
+                            const std::vector<T>& rhs) {
   std::vector<T> result;
   result.reserve(lhs.size() + rhs.size());
 
@@ -19,7 +19,7 @@ std::vector<T> MergeVectors(const std::vector<T>& lhs,
 
 template <typename T>
 std::vector<T> InterleaveVectors(const std::vector<T>& lhs,
-                                                    const std::vector<T>& rhs) {
+                                 const std::vector<T>& rhs) {
   std::vector<T> result;
   result.reserve(lhs.size() + rhs.size());
 
@@ -36,18 +36,17 @@ std::vector<T> InterleaveVectors(const std::vector<T>& lhs,
   return result;
 }
 
-
 int main() {
   std::vector<int> first{0, 0, 0};
   std::vector<int> second{1, 1, 1};
 
-  for (const auto& val : MergeVectors(first, second)) {
-    std::cout << val << ' ';
+  for (const auto& elem : MergeVectors(first, second)) {
+    std::cout << elem << ' ';
   }
   std::cout << '\n';
 
-  for (const auto& val : InterleaveVectors(first, second)) {
-    std::cout << val << ' ';
+  for (const auto& elem : InterleaveVectors(first, second)) {
+    std::cout << elem << ' ';
   }
   std::cout << '\n';
 }
