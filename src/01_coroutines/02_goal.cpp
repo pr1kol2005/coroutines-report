@@ -45,17 +45,16 @@ struct Resumable::promise_type {
     return Resumable(handle_type::from_promise(*this));
   }
 
-  // TODO : show suspend_always / suspend_never difference
+  // show suspend_always / suspend_never difference
   std::suspend_always initial_suspend() noexcept { return {}; }
 
   std::suspend_always final_suspend() noexcept { return {}; }
 
-  // TODO : need for co_yield
+  // needed for co_yield
   // std::suspend_always yield_value(T value) noexcept { }
 
   void unhandled_exception() { std::terminate(); }
 
-  // TODO : ??
   void return_void() noexcept {}
 };
 
